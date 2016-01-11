@@ -27,12 +27,17 @@ public class MoveTest : ChrAttribute {
 	
 	// Update is called once per frame
 	void Update () {
+		if (this.getMoveFlag && Input.GetKeyDown (KeyCode.Space))
+			this.setMoveFlag = false;
+		if (!getMoveFlag && Input.GetKeyDown (KeyCode.H))
+			this.setMoveFlag = true;
 		if (transform.position.y < fallPoint) {
 			setFallFlag = true;
 			transform.position = initPos;
 		}
 		if (getMoveFlag)
 			Move();
+		
 	}
 
 	void FixedUpdate(){
