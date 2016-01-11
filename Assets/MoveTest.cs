@@ -7,12 +7,13 @@ public class MoveTest : ChrAttribute {
 	private Transform player;
 
 	private Vector3 targetPosition;
+	// Use this for initialization
 	void Start () {
-		// extends variable
+		// xtends variable
 
 		initPos = new Vector3 (5,1.2f,-2);
-		//setMoveFlag = true;
-		//setFallFlag = false;
+		setMoveFlag = true;
+		setFallFlag = false;
 
 		// member variable
 		this.transform.position = initPos;
