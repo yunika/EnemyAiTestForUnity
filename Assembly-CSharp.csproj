@@ -51,7 +51,6 @@
      <Compile Include="Assets\Script\Common\Constants.cs" />
      <Compile Include="Assets\Script\GamePlay\Calc\PlayerCalc.cs" />
      <Compile Include="Assets\Script\GamePlay\ChrAttribute.cs" />
-     <Compile Include="Assets\Script\GamePlay\Controller\EnemyAIController.cs" />
      <Compile Include="Assets\Script\GamePlay\Controller\EnemyController.cs" />
      <Compile Include="Assets\Script\GamePlay\Controller\PlayerController.cs" />
      <Compile Include="Assets\Script\GamePlay\GameManager.cs" />

@@ -31,5 +31,4 @@ public class PlayerController : ChrAttribute{
 		var zpos = transform.position.z + ver * Constants.MOVESPEED;
 		transform.position = new Vector3(xpos,transform.position.y,zpos);
 	}
-
 }

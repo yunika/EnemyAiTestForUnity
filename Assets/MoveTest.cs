@@ -2,13 +2,15 @@
 using System.Collections;
 
 public class MoveTest : ChrAttribute {
+	float timer = 1.0f;
+
 	private Transform player;
-
-	public float speed = 10f;
-
 	private Vector3 targetPosition;
 
-	private float changeTargetSqrDistance = 8f;
+	public float speed = 1f;
+	public float time = 1f;
+
+	private float changeTargetSqrDistance = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,17 +22,18 @@ public class MoveTest : ChrAttribute {
 
 		// member variable
 		transform.position = initPos;
-		//this.yPos = transform.position.y;
 
 		targetPosition = GetRandomPositionOnLevel ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (this.getMoveFlag && Input.GetKeyDown (KeyCode.Space))
-			this.setMoveFlag = false;
+		
+
+		if (getMoveFlag && Input.GetKeyDown (KeyCode.Space))
+			setMoveFlag = false;
 		if (!getMoveFlag && Input.GetKeyDown (KeyCode.H))
-			this.setMoveFlag = true;
+			setMoveFlag = true;
 		if (transform.position.y < fallPoint) {
 			setFallFlag = true;
 			transform.position = initPos;
@@ -44,16 +47,15 @@ public class MoveTest : ChrAttribute {
 		
 	}
 	private void Move(){
-		var horizontalPosition = transform.position.x + Constants.MOVESPEED;
-		var verticalPosition = transform.position.z + Constants.MOVESPEED;
-
 		float sqrDistanceToTarget = Vector3.Magnitude (transform.position - targetPosition);
-		if (sqrDistanceToTarget < changeTargetSqrDistance) {
+		if (sqrDistanceToTarget <= changeTargetSqrDistance) {
 			targetPosition = GetRandomPositionOnLevel ();
 		}
-		transform.position = targetPosition;
-		print (sqrDistanceToTarget);
-//		transform.Translate(targetPosition,Space.World);
+		Vector3 movingPos = targetPosition - transform.position;
+		movingPos.Normalize ();
+		transform.position += new Vector3((movingPos.x * Time.deltaTime * speed),0,(movingPos.z * Time.deltaTime * speed));
+		print ("sqrDistance" + sqrDistanceToTarget);
+		print ("normalize" + movingPos);
 		transform.rotation = Quaternion.identity;
 	}
 	public Vector3 GetRandomPositionOnLevel(){
