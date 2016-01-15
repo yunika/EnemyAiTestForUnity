@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		this.Init ();
+		Init ();
 	}
 	
 	// Update is called once per frame
